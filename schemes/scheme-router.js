@@ -63,7 +63,11 @@ router.post("/", (req, res) => {
 });
 
 router.post("/:id/steps", (req, res) => {
-  const stepData = req.body;
+  const stepData = {
+    step_number: req.body.step_number,
+    instructions: req.body.instructions,
+    scheme_id: req.params.id
+  };
   const { id } = req.params;
 
   Schemes.findById(id)
